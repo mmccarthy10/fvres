@@ -106,7 +106,29 @@
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>
+ <?php
+$servername = "localhost";
+$username = "fvres";
+$password = "password";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+?> 
+<div class="container">
+<form action="admin_realtor_inbox.php" method="get">
+Name: <input type="text" name="name"><br>
+E-mail: <input type="text" name="email"><br>
+<input type="submit">
+</form>
+</div>
 		</div>
+
 
 		<!-- Footer -->
 		<footer class="py-5 bg-dark">
