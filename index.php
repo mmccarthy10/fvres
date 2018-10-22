@@ -1,3 +1,44 @@
+<?php
+session_start();
+
+if(isset($_SESSION['sig']))
+{
+	#If login is true send to this location. Already logged in
+	echo("<script>window.loacation='home.php'</script>");
+}
+
+if(isset($_REQUEST['submit']))
+{
+	$email=$_REQUEST['email'];
+	$password=$_REQUEST['pass'];
+
+	include('db_login.php');
+	$query=mysql_query("SELECT * FROM accounts WHERE email='".$email."' AND password='".$password."'");
+	$row=mysql_fetch_array($query);
+	if(empty($row))
+	{
+		#login credentials are wrong / dont exist
+		echo('<script>alert("False login credentials");</script>');
+	}
+	else
+	{
+			#exists and login is good
+			$query2=mysql_query("SELECT accountname FROM accounts WHERE email='".$email."' AND password='".$password."'");
+			$_SESSION['accountname']=mysql_fetch_array($query2);
+
+			$query3=mysql_query("SELECT company FROM accounts WHERE email='".$email."' AND password='".$password."'");
+			$_SESSION['company']=mysql_fetch_array($query3);
+
+			$query4=mysql_query("SELECT  FROM account_type WHERE email='".$email."' AND password='".$password."'");
+			$_SESSION['account_type']=mysql_fetch_array($query4);
+
+			$_SESSION['sig']="OK";
+			echo('<script>window.location="home.php"</script>');
+	}
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +71,7 @@
 					<img src="images/sign.jpg" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="home.php" method="POST">
+				<form class="login100-form validate-form" action="login.php">
 					<span class="login100-form-title">
 						Installer and Realtor Login
 					</span>
