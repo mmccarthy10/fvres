@@ -22,7 +22,7 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Home</a>
+        <a class="navbar-brand" href="index.html">Name (insert)<br /> Company(insert)</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -114,6 +114,14 @@
             <input type="checkbox" name="panel" value="panel"> Panel </input><br />
 
             <input type="checkbox" name="rider" value="rider"> Rider </input><br />
+            <!--TODO: Create JS and JQuery to autofill options and create running tally of prices-->
+
+            <label for="message"><b>Message</b></label>
+            <input type="text" name="message" placeholder="Notes, special instructions, etc..."> </input><br />
+
+            <label for="total"><b>Total</b></label>
+            <input id="total" name="total" type="text" readonly></br>
+            <!-- TODO get total working -->
 
             <input type="submit" value="Create">
           </form>
