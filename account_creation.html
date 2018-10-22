@@ -90,34 +90,55 @@
           <div class="col-lg-12 mb-4">
             <form action="account_values.php" method="post">
               <label for="first_name"><b>First Name</b></label>
-              <input id="first_name" name="first_name"  type="text" placeholder="John" required></br>
+              <input id="first_name" name="first_name"  type="text" required></br>
 
               <label for="last_name"><b>Last Name</b></label>
-              <input id="last_name" name="last_name" type="text" placeholder="Doe" required></br>
+              <input id="last_name" name="last_name" type="text" required></br>
 
               <label for="company"><b>Company</b></label>
-              <input id="company" name="company" type="text" placeholder="Fox Valley Real Estate" required></br>
+              <input id="company" name="company" type="text" required></br>
 
               <label for="email"><b>email</b></label>
-              <input id="email" type="email" name="email" placeholder="jdoe@email.com" required></br>
+              <input id="email" type="email" name="email" required></br>
 
               <label for="account_type"><b>Account Type</b></label>
-              <input id="account_type" name="account_type" type="text" placeholder="" required></br>
+              <select id="account_type" name="account_type">
+                <option value="0">Admin</option>
+                <option value="1">Realtor</option>
+                <option value="2">Installer</option>
+              </select><br />
 
               <label for="zipcode"><b>Zipcode</b></label>
-              <input id="zipcode" name="zipcode" type="text" placeholder="60506" minlength="5" maxlength="5" required></br>
+              <input id="zipcode" name="zipcode" type="text" minlength="5" maxlength="5" required></br>
 
               <label for="cellnumber"><b>CellPhone Number</b></label>
-              <input id="cellnumber" name="cellnumber" type="tel" placeholder="1234567890" minlength="10" maxlength="10" required></br>
+              <input id="cellnumber" name="cellnumber" type="tel" minlength="10" maxlength="10" required></br>
 
               <label for="homenumber"><b>Home Number</b></label>
-              <input id="homenumber" name="homenumber" type="tel" placeholder="1234567890" minlength="10" maxlength="10" required></br>
+              <input id="homenumber" name="homenumber" type="tel" minlength="10" maxlength="10" required></br>
 
               <label for="banknumber"><b>Bank Account Number</b></label>
-              <input id="banknumber" name="banknumber" type="text" placeholder="1234567890" required></br>
+              <input id="banknumber" name="banknumber" type="text"></br>
 
               <label for="routingnumber"><b>Routing Number</b></label>
-              <input id="routingnumber" name="routingnumber" type="routingnumber" placeholder="1234567890" required></br>
+              <input id="routingnumber" name="routingnumber" type="routingnumber"></br>
+
+              <label for="password"><b>Password</b></label>
+              <input id="password" name="password" type="password" required></br>
+
+              <label for="confirm_password"><b>Confirm Password</b></label>
+              <input id="password_confirm" name="password_confirm" type="password" oninput="check(this)" required></br>
+
+              <script language='javascript' type='text/javascript'>
+                  function check(input) {
+                      if (input.value != document.getElementById('password').value) {
+                          input.setCustomValidity('Password Must be Matching.');
+                      } else {
+                          // input is valid -- reset the error message
+                          input.setCustomValidity('');
+                      }
+                  }
+              </script>
 
               <input type="submit" value="Create Account">
             </form>
