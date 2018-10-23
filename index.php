@@ -39,9 +39,9 @@ if(isset($_REQUEST['submit']))
         $email = $_POST["email"];
         $password = $_POST["pass"];
 
-				$sql = "SELECT account_id FROM accounts WHERE email='$email'";
-				echo($sql);
-				exit();
+				$sql = "SELECT account_id FROM accounts WHERE email=$email";
+				// echo($sql);
+				// exit();
 				$data = mysqli_query($conn, $sql);
 				$result1 = mysqli_fetch_assoc($data);
 
