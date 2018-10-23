@@ -137,7 +137,6 @@ if (mysqli_query($conn, $sql)) {
 		</nav>
 
 		<div class="container">
-
 			<h2>Hover Rows</h2>
 			<table class="table table-hover admin-inbox">
 				<thead>
@@ -208,7 +207,7 @@ mysqli_close($conn);
 				</div>
 			</div>
 <div class="container">
-<form action="./test.php" method="post">
+<!--<form action="./test.php" method="post">
 Account Name: <input type="text" name="accountname"><br>
 Password: <input type="password" name="password"><br>
 First Name: <input type="text" name="first_name"><br>
@@ -223,7 +222,7 @@ Bank Number: <input type="text" name="banknumber"><br>
 Routing Number: <input type="text" name="routingnumber"><br>
 <input type="hidden" name="submit" value="1"/>
 <input type="submit">
-</form>
+</form>-->
 </div>
 		</div>
 
