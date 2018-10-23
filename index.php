@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
 session_start();
 
@@ -9,38 +12,113 @@ if(isset($_SESSION['sig']))
 
 if(isset($_REQUEST['submit']))
 {
-	$email=$_REQUEST['email'];
-	$password=$_REQUEST['pass'];
+	$email=$_REQUEST["email"];
+	$password=$_REQUEST["pass"];
+	#echo($email);
+	#echo($password);
+	#exit();
 
-	include('db_login.php');
-	$query=mysql_query("SELECT * FROM accounts WHERE email='".$email."' AND password='".$password."'");
-	$row=mysql_fetch_array($query);
-	if(empty($row))
-	{
-		#login credentials are wrong / dont exist
-		echo('<script>alert("False login credentials");</script>');
+	#include('db_login.php');
+	$servername = "localhost";
+	$username = "fvres";
+	$password = "password";
+	$dbname = "fvres";
+
+	// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+	// Check connection
+	if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
 	}
-	else
-	{
-			#exists and login is good
-			$query2=mysql_query("SELECT accountname FROM accounts WHERE email='".$email."' AND password='".$password."'");
-			$_SESSION['accountname']=mysql_fetch_array($query2);
+	echo "Connected successfully";
+	#-----------------
+	if(isset($_POST["email"], $_POST["pass"]))
+    {
 
-			$query3=mysql_query("SELECT company FROM accounts WHERE email='".$email."' AND password='".$password."'");
-			$_SESSION['company']=mysql_fetch_array($query3);
+        $email = $_POST["email"];
+        $password = $_POST["pass"];
 
-			$query4=mysql_query("SELECT  FROM account_type WHERE email='".$email."' AND password='".$password."'");
-			$_SESSION['account_type']=mysql_fetch_array($query4);
+				$sql = "SELECT account_id FROM accounts WHERE email='$email'";
+				$data = mysqli_query($conn, $sql);
+				$result1 = mysqli_fetch_assoc($data);
 
-			$_SESSION['sig']="OK";
-			echo('<script>window.location="home.php"</script>');
-	}
+        if(mysql_num_rows($result1) > 0 )
+        {
+            $_SESSION["sig"] = "OK";
+            $_SESSION["email"] = $email;
+						$_SESSION["id"] = $esult1['account_id'];
+						echo('<script>window.location="home.php"</script>');
+        }
+        else
+        {
+            echo('<script>alert("False login credentials");</script>');
+        }
+		}
+		else{
+			echo 'The username or password arent set';
+			echo $_POST["email"];
+			echo $_POST["pass"];
+		}
 }
+	#-----------------
+	// $sql = "SELECT * FROM accounts WHERE email='" . $email . "' AND password='" . $password ."'";
+	// $result = mysqli_query($conn, $sql);
+	//
+	// if (mysqli_num_rows($result) > 0) {
+	//     // output data of each row
+	//     while($row = mysqli_fetch_assoc($result)) {
+	// echo "<tr>\n<td>" .
+	// $row["account_id"] . "</td>\n<td>" .
+	// $row["accountname"] . "</td>\n<td>" .
+	// $row["first_name"] . "</td>\n<td>" .
+	// $row["last_name"] . "</td>\n<td>" .
+	// $row["company"] . "</td>\n<td>" .
+	// $row["email"] . "</td>\n<td>" .
+	// $row["account_type"] . "</td>\n<td>" .
+	// $row["zipcode"] . "</td>\n<td>" .
+	// $row["cellnumber"] . "</td>\n<td>" .
+	// $row["homenumber"] . "</td>\n<td>" .
+	// $row["banknumber"] . "</td>\n<td>" .
+	// $row["routingnumber"] . "</td>\n<td>
+	// <a href='./test.php?del=" . $row["account_id"] . "'>x</a></td>\n</tr>\n";
+	//     }
+	// } else {
+	//     echo "0 results";
+	// }
+//
+// 	mysqli_close($conn);
+// 	#$query="SELECT * FROM accounts";
+// 	#$row=mysql_query($query);
+// 	#print_r($row);
+// 	exit();
+//
+// 	if(empty($row))
+// 	{
+// 		#login credentials are wrong / dont exist
+// 		echo('<script>alert('.$row.');</script>');
+// 		echo('<script>alert("False login credentials");</script>');
+// 	}
+// 	else
+// 	{
+// 			#exists and login is good
+// 			#$query2=mysql_query("SELECT accountname FROM accounts WHERE email='".$email."' AND password='".$password."'");
+// 			#$_SESSION['accountname']=mysql_fetch_array($query2);
+//
+// 			#$query3=mysql_query("SELECT company FROM accounts WHERE email='".$email."' AND password='".$password."'");
+// 			#$_SESSION['company']=mysql_fetch_array($query3);
+//
+// 			#$query4=mysql_query("SELECT  FROM account_type WHERE email='".$email."' AND password='".$password."'");
+// 			#$_SESSION['account_type']=mysql_fetch_array($query4);
+//
+// 			$_SESSION['sig']="OK";
+// 			echo('<script>window.location="home.php"</script>');
+// 	}
+// }
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
 	<title>Fox Valley Real Estate and Signs</title>
 	<meta charset="UTF-8">
@@ -71,7 +149,7 @@ if(isset($_REQUEST['submit']))
 					<img src="images/sign.jpg" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="login.php">
+				<form class="login100-form validate-form" method="post" action="index.php">
 					<span class="login100-form-title">
 						Installer and Realtor Login
 					</span>
@@ -94,7 +172,7 @@ if(isset($_REQUEST['submit']))
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+							<input type="submit" name="submit" value="Login">
 						</button>
 					</div>
 

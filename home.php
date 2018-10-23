@@ -1,25 +1,27 @@
 <?php
+#Check if the user is logged in (Put this php code in all of your documents that require login)
 session_start();
 if(!isset($_SESSION['sig']))
 {
-  #goto login page if user isnt logged in
-  echo('<script>window.location="index.php"</script>');
+	#go to the login page if sig doesn't exist in the SESSION array (i.e. the user is not logged in)
+	echo('<script>window.location="index.php"</script>');
 }
-else
-{
-  if(!isset($_SESSION['accountname']))
-  {
-    echo "Accountname is not set";
-  }
 
-  if(!isset($_SESSION['company']))
-  {
-    echo "Company is not set";
-  }
 
-  if(!isset($_SESSION['account_type']))
-  {
-    echo "Account type is not set";
-  }
-}
 ?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home Page</title>
+</head>
+
+<body>
+<center>
+<h1>Welcome to our system!</h1>
+<br>
+<a href="logout.php">Logout</a>
+</center>
+
+</body>
+</html>
