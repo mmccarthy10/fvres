@@ -38,16 +38,15 @@ if(isset($_REQUEST['submit']))
 
         $email = $_POST["email"];
         $password = $_POST["pass"];
-				echo($email);
-				echo($password);
-				exit();
+				// echo($email);
+				// echo($password);
 
-				$sql = "SELECT account_id FROM accounts WHERE email='$email'";
+
+				$sql = "SELECT account_id FROM accounts WHERE email='" . $email . "'";
 				echo($sql);
 				$data = mysqli_query($conn, $sql);
-				echo($data);
 				$result1 = mysqli_fetch_assoc($data);
-				echo($result1);
+				#echo(isset($result1));
 				exit();
 
         if(mysql_num_rows($result1) > 0 )
@@ -148,6 +147,9 @@ if(isset($_REQUEST['submit']))
 <!--===============================================================================================-->
 </head>
 <body>
+<a href="admin_home.html">admin</a>
+<a href="installer_home.html">installer</a>
+<a href="realtor_home.html">realtor</a>
 
 	<div class="limiter">
 		<div class="container-login100">
