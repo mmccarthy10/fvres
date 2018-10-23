@@ -38,14 +38,13 @@ if(isset($_REQUEST['submit']))
 
         $email = $_POST["email"];
         $password = $_POST["pass"];
-				echo($email);
-				echo($password);
+				// echo($email);
+				// echo($password);
 
 
 				$sql = "SELECT account_id FROM accounts WHERE email='" . $email . "'";
 				echo($sql);
 				$data = mysqli_query($conn, $sql);
-				echo($data);
 				$result1 = mysqli_fetch_assoc($data);
 				#echo(isset($result1));
 				exit();
