@@ -38,6 +38,9 @@ if(isset($_REQUEST['submit']))
 
         $email = $_POST["email"];
         $password = $_POST["pass"];
+				echo($email);
+				echo($password);
+				exit();
 
 				$sql = "SELECT account_id FROM accounts WHERE email='$email'";
 				echo($sql);
