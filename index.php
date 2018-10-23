@@ -40,14 +40,14 @@ if(isset($_REQUEST['submit']))
         $password = $_POST["pass"];
 				echo($email);
 				echo($password);
-				exit();
 
-				$sql = "SELECT account_id FROM accounts WHERE email='$email'";
+
+				$sql = "SELECT account_id FROM accounts WHERE email='" . $email . "'";
 				echo($sql);
 				$data = mysqli_query($conn, $sql);
 				echo($data);
 				$result1 = mysqli_fetch_assoc($data);
-				echo($result1);
+				#echo(isset($result1));
 				exit();
 
         if(mysql_num_rows($result1) > 0 )
