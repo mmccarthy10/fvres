@@ -127,7 +127,7 @@
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='installer_home.html'><button class="btn btn-primary main-button">
+					<a href='admin_home.html'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>
