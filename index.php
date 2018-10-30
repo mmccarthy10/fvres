@@ -42,14 +42,15 @@ if(isset($_REQUEST['submit']))
 				// echo($password);
 
 
-				$sql = "SELECT account_id FROM accounts WHERE email='" . $email . "'";
+
+				$sql = "SELECT account_id FROM accounts WHERE email='nwb1799@gmail.com'";
 				echo($sql);
 				$data = mysqli_query($conn, $sql);
 				$result1 = mysqli_fetch_assoc($data);
-				#echo(isset($result1));
-				exit();
 
-        if(mysql_num_rows($result1) > 0 )
+			
+
+        if(mysql_num_rows($data) > 0 )
         {
             $_SESSION["sig"] = "OK";
             $_SESSION["email"] = $email;
