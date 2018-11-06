@@ -152,6 +152,7 @@ if(isset($_REQUEST['submit']))
 						</a>
 					</div>
 				-->
+<input type="hidden" name="submit" value="true">
 				</form>
 			</div>
 		</div>
