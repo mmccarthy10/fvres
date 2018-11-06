@@ -33,40 +33,21 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-if ($_GET['del'] != '') {
-$sql = "DELETE FROM accounts WHERE account_id=" . $_GET['del'];
-
+if ($_GET['clear'] != '') {
+$sql = "UPDATE jobs SET job_state='3' WHERE job_id='" . $_GET['clear'] . "' AND installer='" . $_SESSION['id'] . "'";
+echo $sql;
 if (mysqli_query($conn, $sql)) {
     echo "Successful deletion<br>";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
-
 }
 
-if ($_POST['submit'] == 1) {
-$sql = "INSERT INTO accounts (accountname, password, first_name, last_name, company, email, account_type, zipcode, cellnumber, homenumber, banknumber, routingnumber)
-VALUES ('" .
-$_POST['accountname'] . "', '" .
-$_POST['password'] . "', '" .
-$_POST['first_name'] . "', '" .
-$_POST['last_name'] . "', '" .
-$_POST['company'] . "', '" .
-$_POST['email'] . "', '" .
-$_POST['account_type'] . "', '" .
-$_POST['zipcode'] . "', '" .
-$_POST['cellnumber'] . "', '" .
-$_POST['homenumber'] . "', '" .
-$_POST['banknumber'] . "', '" .
-$_POST['routingnumber'] . "') " .
+$sql = "SELECT * FROM jobs WHERE job_state='2' AND installer='" . $_SESSION['id'] . "' LIMIT 1 OFFSET " . $_GET["id"];
+$result = mysqli_query($conn, $sql);
 
-"";
-
-if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
+if (mysqli_num_rows($result) == 0) {
+echo "<script>window.location.href = './installer_newjobs_page.php;</script>";
 }
 
 ?> 
@@ -153,19 +134,36 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT * FROM accounts LIMIT 1 OFFSET" . $_GET["id"];
+$sql = "SELECT * FROM jobs WHERE job_state='2' AND installer='" . $_SESSION['id'] . "' LIMIT 1 OFFSET " . $_GET["id"];
 $result = mysqli_query($conn, $sql);
+$job_id;
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
+$job_id = $row["job_id"];
 if ($row["job_type"] == 1) {
 	echo "<li>Type: Removal</li>";
 	} else {
 			echo "<li>Type: Installation</li>";
 	}
 	echo "<li>Realtor: " . $row["realtor"] . "</li>
-	<li>Address: " . $row["street_address"] . "</li>"
+	<li>Address: " . $row["street_address"] . ", " . $row['city'] . ", " . $row['zipcode'] . "</li>\n";
+if ($row['job_flags'] & 1 == 1) {
+	echo "<li>Ground Post</li>\n";
+}
+if ($row['job_flags'] & 2 == 2) {
+	echo "<li>Brochure Box</li>\n";
+}
+if ($row['job_flags'] & 4 == 4) {
+	echo "<li>Panel</li>\n";
+}
+if ($row['job_flags'] & 8 == 8) {
+	echo "<li>Rider</li>\n";
+}
+if ($row['comments'] != '') {
+	echo "<li>Comments: " . $row['comments'] . "</li>\n";
+}
     }
 } else {
     echo "0 results";
@@ -183,7 +181,9 @@ mysqli_close($conn);
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='installer_home.html'><button class="btn btn-primary main-button">
+<?php
+	echo "<a href='installer_job_detail.php?id=" . $_GET['id'] . "&clear=" . $job_id . " '><button class='btn btn-primary main-button'>";
+?>
 							<span style="font-size:50px;">NEXT</span></button></a>
 				</div>
 			</div>
@@ -191,7 +191,7 @@ mysqli_close($conn);
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='installer_home.html'><button class="btn btn-primary main-button">
+					<a href='installer_newjobs_page.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>

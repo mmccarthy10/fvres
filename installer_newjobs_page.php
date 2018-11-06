@@ -146,7 +146,7 @@ if (!$conn) {
 // Populate Table
 $sql = "SELECT * FROM jobs WHERE job_state='2' AND installer='". $_SESSION['id'] ."'";
 $result = mysqli_query($conn, $sql);
-$i = 1;
+$i = 0;
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {

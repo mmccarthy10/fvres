@@ -96,10 +96,6 @@ if(isset($_REQUEST['submit']))
 <!--===============================================================================================-->
 </head>
 <body>
-<a href="admin_home.html">admin</a>
-<a href="installer_home.html">installer</a>
-<a href="realtor_home.html">realtor</a>
-
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">

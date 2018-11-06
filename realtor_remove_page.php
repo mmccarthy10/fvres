@@ -136,7 +136,7 @@ if (mysqli_query($conn, $sql)) {
 
       <div class="row">
         <div class="col-lg-12 mb-4">
-          <form action="./realtor_install_page.php" method="post">
+          <form action="./realtor_remove_page.php" method="post">
             <label for="address"><b>Address</b></label>
             <input id="address" name="address" type="text" placeholder="1234 Main St" required></br>
 
