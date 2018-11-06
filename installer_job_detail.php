@@ -54,7 +54,7 @@ echo "<script>window.location.href = './installer_newjobs_page.php;</script>";
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.php">Name (insert)<br /> Company(insert)</a>
+        <a class="navbar-brand" href="index.php">Name<br /> Company</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -203,7 +203,7 @@ mysqli_close($conn);
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; FVRES 2018</p>
       </div>
       <!-- /.container -->
     </footer>
