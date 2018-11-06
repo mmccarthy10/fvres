@@ -18,7 +18,58 @@
   </head>
 
   <body>
+<?php
+session_start();
 
+$servername = "localhost";
+$username = "fvres";
+$password = "password";
+$dbname = "fvres";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if ($_GET['del'] != '') {
+$sql = "DELETE FROM accounts WHERE account_id=" . $_GET['del'];
+
+if (mysqli_query($conn, $sql)) {
+    echo "Successful deletion<br>";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+}
+
+if ($_POST['submit'] == 1) {
+$sql = "INSERT INTO accounts (accountname, password, first_name, last_name, company, email, account_type, zipcode, cellnumber, homenumber, banknumber, routingnumber)
+VALUES ('" .
+$_POST['accountname'] . "', '" .
+$_POST['password'] . "', '" .
+$_POST['first_name'] . "', '" .
+$_POST['last_name'] . "', '" .
+$_POST['company'] . "', '" .
+$_POST['email'] . "', '" .
+$_POST['account_type'] . "', '" .
+$_POST['zipcode'] . "', '" .
+$_POST['cellnumber'] . "', '" .
+$_POST['homenumber'] . "', '" .
+$_POST['banknumber'] . "', '" .
+$_POST['routingnumber'] . "') " .
+
+"";
+
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+}
+
+?> 
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -89,12 +140,39 @@
       <div class="row">
         <div class="col-lg-12 mb-4">
 <div class="container">
-				<ul>
-				<li>Type: Installation</li>
-				<li>Realtor: RE/MAX</li>
-				<li>Address: 100 Main St., Oswego, IL, 60543</li>
-				<li>Sign Type: Gold Post</li>
-				<li>Brochure Box</li>
+				<ul><?php
+$servername = "localhost";
+$username = "fvres";
+$password = "password";
+$dbname = "fvres";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT * FROM accounts LIMIT 1 OFFSET" . $_GET["id"];
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+if ($row["job_type"] == 1) {
+	echo "<li>Type: Removal</li>";
+	} else {
+			echo "<li>Type: Installation</li>";
+	}
+	echo "<li>Realtor: " . $row["realtor"] . "</li>
+	<li>Address: " . $row["street_address"] . "</li>"
+    }
+} else {
+    echo "0 results";
+}
+
+mysqli_close($conn);
+?> 
 				</ul>
         </div>
       </div>
