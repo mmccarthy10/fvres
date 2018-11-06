@@ -33,6 +33,8 @@
 	<body>
 
 <?php
+
+session_start();
 $servername = "localhost";
 $username = "fvres";
 $password = "password";
@@ -124,7 +126,7 @@ if (mysqli_query($conn, $sql)) {
 <th>Company</th>
 <th>Address</th>
 <th>City</th>
-<th>Installer</th>
+<th>ZIP Code</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -141,40 +143,21 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Create list of installers
-$sql = "SELECT * FROM accounts WHERE account_type='2'";
-$result = mysqli_query($conn, $sql);
-$installers = array();
-$installer_id = array();
-
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-$name = $row["first_name"] . " " . $row["last_name"];
-array_push($installers, $name);
-array_push($installer_id, $row["account_id"]);
-    }
-}
-
 // Populate Table
-$sql = "SELECT * FROM jobs WHERE job_state='0'";
+$sql = "SELECT * FROM jobs WHERE job_state='2' AND installer='". $_SESSION['id'] ."'";
 $result = mysqli_query($conn, $sql);
+$i = 1;
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
 
 echo "<tr>\n<td>" . 
 $row["date"] . "</td>\n<td>" . 
-$row["realtor"] . "</td>\n<td>" . 
-$row["street_address"] . "</td>\n<td>" . 
+$row["realtor"] . "</td>\n<td>" .  
+"<a href=./installer_job_detail.php?id=" . $i . ">" . $row["street_address"] . "</td>\n<td>" . 
 $row["city"] . "</td>\n<td>" . 
-"<form method='post' action='./admin_realtor_inbox.php'><select name='installer'>\n<option>Select One</option>";
-$j = 0;
-foreach ($installers as &$k) {
-	echo "<option value='" . $installer_id[$j] . "'>" . $k . "</option>\n";
-	$j = $j + 1;
-}
-echo "</select><input type='hidden' name='job_id' value='" . $row["job_id"] . "'><input type='submit' value='Assign'></form>\n</td>\n</tr>\n";
+$row["zipcode"] . "</td>\n</tr></a>\n";
+$i += 1;
     }
 } else {
     echo "0 results";
@@ -187,7 +170,7 @@ mysqli_close($conn);
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='admin_home.html'><button class="btn btn-primary main-button">
+					<a href='installer_home.html'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>

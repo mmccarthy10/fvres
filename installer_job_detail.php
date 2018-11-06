@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-  .btn-sq-lg{
-    width: 250px !important;
-    height: 250px !important;
-  }
-</style>
-
   <head>
 
     <meta charset="utf-8">
@@ -14,16 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Home</title>
+    <title>Job Listings</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
-
-    <!-- FVRES custom styles -->
-    <link href="css/fvres.css" rel="stylesheet">
 
   </head>
 
@@ -38,7 +28,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item">
@@ -86,27 +76,56 @@
       </div>
     </nav>
 
+
+
+    <!-- Page Content -->
     <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Job Details
+        <!--<small>Subheading</small>-->
+      </h1>
+	
       <div class="row">
-        <div class="col-lg-12 mb-4" style="text-align:center;">
-          <br /><br />
-          <a href='installer_newjobs_page.php'><button class="btn btn-primary main-button">
-            <span style="font-size:50px;">JOBS</span></button></a>
+        <div class="col-lg-12 mb-4">
+<div class="container">
+				<ul>
+				<li>Type: Installation</li>
+				<li>Realtor: RE/MAX</li>
+				<li>Address: 100 Main St., Oswego, IL, 60543</li>
+				<li>Sign Type: Gold Post</li>
+				<li>Brochure Box</li>
+				</ul>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12 mb-4" style="text-align:center;">
-          <br /><br />
-          <a href='installer_completedjobs_page.html'><button class="btn btn-primary main-button">
-            <span style="font-size:50px;">COMPLETED</span></button></a>
-        </div>
-      </div>
+
     </div>
+
+          <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+			<div class="row">
+				<div class="col-lg-12 mb-4" style="text-align:center;">
+					<br /><br />
+					<a href='installer_home.html'><button class="btn btn-primary main-button">
+							<span style="font-size:50px;">NEXT</span></button></a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 mb-4" style="text-align:center;">
+					<br /><br />
+					<a href='installer_home.html'><button class="btn btn-primary main-button">
+							<span style="font-size:50px;">BACK</span></button></a>
+				</div>
+			</div>
+</div>
+
+
+
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; FVRES</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
       </div>
       <!-- /.container -->
     </footer>
