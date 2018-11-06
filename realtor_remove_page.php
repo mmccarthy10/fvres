@@ -52,7 +52,7 @@ VALUES ('" .
 $_REQUEST['address'] . "', '" .
 $_REQUEST['zipcode'] . "', '" .
 $_REQUEST['city'] . "', '" .
-"0', '', '" .
+"1', '', '" .
 $_SESSION['id'] . "', '" .
 "-1', '" .
 $flag . "', '" .
@@ -130,7 +130,7 @@ if (mysqli_query($conn, $sql)) {
     <div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Install Page
+      <h1 class="mt-4 mb-3">Removal Page
         <!--<small>Subheading</small>-->
       </h1>
 
@@ -150,14 +150,6 @@ if (mysqli_query($conn, $sql)) {
             <label for="zipcode"><b>Zipcode</b></label>
             <input id="zipcode" name="zipcode" type="text" minlength="5" maxlength="5" required></br>
 
-            <br /><h4> Options </h4><br />
-            <input type="checkbox" name="ground_post" value="ground_post"> Post </input><br />
-
-            <input type="checkbox" name="brochure_box" value="brochure_box"> Brochure Box</input><br />
-
-            <input type="checkbox" name="panel" value="panel"> Panel </input><br />
-
-            <input type="checkbox" name="rider" value="rider"> Rider </input><br />
             <!--TODO: Create JS and JQuery to autofill options and create running tally of prices-->
 
             <label for="message"><b>Message</b></label>
