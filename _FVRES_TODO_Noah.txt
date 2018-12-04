@@ -10,3 +10,7 @@ Realtor_install_page
 installer
 	-New Jobs Page
 	-Completed Jobs page
+
+	table class="table table-hover admin-inbox"
+	thead class thead-dark
+	th scope="col"

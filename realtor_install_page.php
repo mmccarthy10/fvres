@@ -35,6 +35,9 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+//check for post
+if(isset($_POST['submit'])){
+
 if ($_REQUEST['submit'] == "true") {
 $flag = 0;
 if ($_REQUEST['ground_post'] != "") {
@@ -66,6 +69,7 @@ if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
 }
 }
 ?>

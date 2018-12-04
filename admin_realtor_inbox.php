@@ -2,6 +2,9 @@
 <html lang="en">
 <?php
 session_start();
+//added this becasue still getting unidentified index errors and cant figure out why
+//need to put isset submit or something in here
+error_reporting(0);
 ?>
 	<style>
 .btn-sq-lg{
@@ -47,17 +50,17 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
+//if(isset($_POST['submit'])){
 if ($_REQUEST['job_id'] != '') {
 $sql = "UPDATE jobs SET job_state='2', installer='" . $_REQUEST['installer'] . "' WHERE job_id='" . $_REQUEST['job_id'] . "'";
-
+}
 if (mysqli_query($conn, $sql)) {
     echo "Successful deletion<br>";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-}
+//}
 
 
 ?>
@@ -117,17 +120,17 @@ if (mysqli_query($conn, $sql)) {
 				</div>
 			</div>
 		</nav>
-
+<br /><br />
 		<div class="container">
-			<h2>Hover Rows</h2>
+			<!--<h2>Hover Rows</h2>-->
 			<table class="table table-hover admin-inbox">
-				<thead>
+				<thead class="thead-dark">
 					<tr>
-<th>Date</th>
-<th>Company</th>
-<th>Address</th>
-<th>City</th>
-<th>Installer</th>
+<th scope="col">Date</th>
+<th scope="col">Company</th>
+<th scope="col">Address</th>
+<th scope="col">City</th>
+<th scope="col">Installer</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 session_start();
+error_reporting(0);
 ?>
 	<style>
 .btn-sq-lg{
@@ -120,15 +121,16 @@ if (mysqli_query($conn, $sql)) {
 		</nav>
 
 		<div class="container">
-			<h2>Hover Rows</h2>
+			<!--<h2>Hover Rows</h2>-->
+			<br /><br />
 			<table class="table table-hover admin-inbox">
-				<thead>
+				<thead class="thead-dark">
 					<tr>
-<th>Date</th>
-<th>Company</th>
-<th>Address</th>
-<th>City</th>
-<th>ZIP Code</th>
+<th scope="col">Date</th>
+<th scope="col">Company</th>
+<th scope="col">Address</th>
+<th scope="col">City</th>
+<th scope="col">ZIP Code</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -162,7 +164,7 @@ $row["zipcode"] . "</td>\n</tr></a>\n";
 $i += 1;
     }
 } else {
-    echo "0 results";
+    echo "No jobs assigned";
 }
 
 mysqli_close($conn);
