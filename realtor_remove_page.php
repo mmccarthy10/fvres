@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
   <head>
 
     <meta charset="utf-8">
@@ -22,7 +25,6 @@
 
   <body>
 <?php
-session_start();
 $servername = "localhost";
 $username = "fvres";
 $password = "password";
@@ -47,7 +49,7 @@ $flag += 4;
 if ($_REQUEST['rider'] != "") {
 $flag += 8;
 }
-$sql = "INSERT INTO jobs (street_address, zipcode, city, job_type, rider_info, realtor, installer, job_flags, job_state, comments, price, date) 
+$sql = "INSERT INTO jobs (street_address, zipcode, city, job_type, rider_info, realtor, installer, job_flags, job_state, comments, price, date)
 VALUES ('" .
 $_REQUEST['address'] . "', '" .
 $_REQUEST['zipcode'] . "', '" .
@@ -66,11 +68,11 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 }
-?> 
+?>
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.php">Name<br /> Company</a>
+        <a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -168,7 +170,7 @@ if (mysqli_query($conn, $sql)) {
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='realtor_home.html'><button class="btn btn-primary main-button">
+					<a href='realtor_home.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
 	<style>
 .btn-sq-lg{
 	width: 250px !important;
@@ -78,11 +81,11 @@ if (mysqli_query($conn, $sql)) {
 }
 }
 
-?> 
+?>
 		<!-- Navigation -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="index.php">Name (insert)<br /> Company(insert)</a>
+				<a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?> </a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -176,18 +179,18 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-echo "<tr>\n<td>" . 
-$row["account_id"] . "</td>\n<td>" . 
-$row["accountname"] . "</td>\n<td>" . 
-$row["first_name"] . "</td>\n<td>" . 
-$row["last_name"] . "</td>\n<td>" . 
-$row["company"] . "</td>\n<td>" . 
-$row["email"] . "</td>\n<td>" . 
-$row["account_type"] . "</td>\n<td>" . 
-$row["zipcode"] . "</td>\n<td>" . 
-$row["cellnumber"] . "</td>\n<td>" . 
-$row["homenumber"] . "</td>\n<td>" . 
-$row["banknumber"] . "</td>\n<td>" . 
+echo "<tr>\n<td>" .
+$row["account_id"] . "</td>\n<td>" .
+$row["accountname"] . "</td>\n<td>" .
+$row["first_name"] . "</td>\n<td>" .
+$row["last_name"] . "</td>\n<td>" .
+$row["company"] . "</td>\n<td>" .
+$row["email"] . "</td>\n<td>" .
+$row["account_type"] . "</td>\n<td>" .
+$row["zipcode"] . "</td>\n<td>" .
+$row["cellnumber"] . "</td>\n<td>" .
+$row["homenumber"] . "</td>\n<td>" .
+$row["banknumber"] . "</td>\n<td>" .
 $row["routingnumber"] . "</td>\n<td>
 <a href='./test.php?del=" . $row["account_id"] . "'>x</a></td>\n</tr>\n";
     }
@@ -196,13 +199,13 @@ $row["routingnumber"] . "</td>\n<td>
 }
 
 mysqli_close($conn);
-?> 
+?>
 				</tbody>
 			</table>
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='admin_home.html'><button class="btn btn-primary main-button">
+					<a href='admin_installer.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>

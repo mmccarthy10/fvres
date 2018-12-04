@@ -45,15 +45,18 @@ if(isset($_REQUEST['submit']))
             $_SESSION["email"] = $row["email"];
 						$_SESSION["id"] = $row["account_id"];
 						$_SESSION["account_type"] = $row["account_type"];
+						$_SESSION["first_name"] = $row["first_name"];
+						$_SESSION["last_name"] = $row["last_name"];
+						$_SESSION["company"] = $row["company"];
 
 						if($_SESSION["account_type"] == 0 ){
-							echo('<script>window.location="admin_home.html"</script>');
+							echo('<script>window.location="admin_home.php"</script>');
 						}
 						if($_SESSION["account_type"] == 1 ){
-							echo('<script>window.location="realtor_home.html"</script>');
+							echo('<script>window.location="realtor_home.php"</script>');
 						}
 						if($_SESSION["account_type"] == 2 ){
-							echo('<script>window.location="installer_home.html"</script>');
+							echo('<script>window.location="installer_home.php"</script>');
 						}
 					}
         }

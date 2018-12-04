@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
   <head>
 
     <meta charset="utf-8">
@@ -7,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Completed Jobs</title>
+    <title>Job Listings</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +25,7 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.php">Name<br /> Company</a>
+        <a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -85,7 +88,7 @@
       <h1 class="mt-4 mb-3">Completed Jobs
         <!--<small>Subheading</small>-->
       </h1>
-	
+
       <div class="row">
         <div class="col-lg-12 mb-4">
 <div class="container">
@@ -93,24 +96,29 @@
 				<thead>
 					<tr>
 <th>Date</th>
+<th>Realtor</th>
 <th>Job Type</th>
 <th>Address</th>
-<th>Payment</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr>
 				<td>10-25-2018</td>
+				<td>RE/MAX</td>
 				<td>Installation</td>
 				<td>100 Main St., Oswego, IL</td>
-				<td>$10.00</td>
 				</tr>
 				<tr>
-				<td>
-				10-23-2018</td>
+				<td>10-24-2018</td>
+				<td>RE/MAX</td>
 				<td>Removal</td>
 				<td>82 Galena Blvd., Aurora, IL</td>
-				<td>$5.00</td>
+				</tr>
+				<tr>
+				<td>10-22-2018</td>
+				<td>RE/MAX</td>
+				<td>Installation</td>
+				<td>2402 Park Rd., Elgin, IL</td>
 				</tr>
 				</tbody>
 				</table>
@@ -122,7 +130,7 @@
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='installer_home.html'><button class="btn btn-primary main-button">
+					<a href='admin_installer.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>
@@ -131,12 +139,10 @@
 
 
 
-
-
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; FVRES 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
       </div>
       <!-- /.container -->
     </footer>

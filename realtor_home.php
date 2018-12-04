@@ -3,6 +3,13 @@
 <?php
 session_start();
 ?>
+<style>
+  .btn-sq-lg{
+    width: 250px !important;
+    height: 250px !important;
+  }
+</style>
+
   <head>
 
     <meta charset="utf-8">
@@ -10,7 +17,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Install</title>
+    <title>Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,57 +25,13 @@ session_start();
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
 
-		<!-- FVRES custom styles -->
-		<link href="css/fvres.css" rel="stylesheet">
+    <!-- FVRES custom styles -->
+    <link href="css/fvres.css" rel="stylesheet">
 
   </head>
 
   <body>
-<?php
-$servername = "localhost";
-$username = "fvres";
-$password = "password";
-$dbname = "fvres";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-if ($_REQUEST['submit'] == "true") {
-$flag = 0;
-if ($_REQUEST['ground_post'] != "") {
-$flag += 1;
-}
-if ($_REQUEST['brochure_box'] != "") {
-$flag += 2;
-}
-if ($_REQUEST['panel'] != "") {
-$flag += 4;
-}
-if ($_REQUEST['rider'] != "") {
-$flag += 8;
-}
-$sql = "INSERT INTO jobs (street_address, zipcode, city, job_type, rider_info, realtor, installer, job_flags, job_state, comments, price, date)
-VALUES ('" .
-$_REQUEST['address'] . "', '" .
-$_REQUEST['zipcode'] . "', '" .
-$_REQUEST['city'] . "', '" .
-"0', '', '" .
-$_SESSION['id'] . "', '" .
-"-1', '" .
-$flag . "', '" .
-"0', '" .
-$_REQUEST['message'] . "', '" .
-"10.00', '" .
-date("Y-m-d") . "')";
-if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-}
-?>
+
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -78,7 +41,7 @@ if (mysqli_query($conn, $sql)) {
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item">
@@ -126,73 +89,36 @@ if (mysqli_query($conn, $sql)) {
       </div>
     </nav>
 
-
-
-    <!-- Page Content -->
     <div class="container">
 
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Install Page
-        <!--<small>Subheading</small>-->
-      </h1>
-
+      <!--<h1 class="my-4">WELCOME REALTOR</h1>-->
       <div class="row">
-        <div class="col-lg-12 mb-4">
-          <form action="./realtor_install_page.php" method="post">
-            <label for="address"><b>Address</b></label>
-            <input id="address" name="address" type="text" placeholder="1234 Main St" required></br>
-
-            <label for="city"><b>City</b></label>
-            <input id="city" name="city" type="text" value="" required></br>
-
-            <label for="state"><b>State</b></label>
-            <input id="state" name="state" type="text" value="Illinois" required></br>
-            <!-- TODO: posssible Javascript to autofill / complete typing -->
-
-            <label for="zipcode"><b>Zipcode</b></label>
-            <input id="zipcode" name="zipcode" type="text" minlength="5" maxlength="5" required></br>
-
-            <br /><h4> Options </h4><br />
-            <input type="checkbox" name="ground_post" value="ground_post"> Post </input><br />
-
-            <input type="checkbox" name="brochure_box" value="brochure_box"> Brochure Box</input><br />
-
-            <input type="checkbox" name="panel" value="panel"> Panel </input><br />
-
-            <input type="checkbox" name="rider" value="rider"> Rider </input><br />
-            <!--TODO: Create JS and JQuery to autofill options and create running tally of prices-->
-
-            <label for="message"><b>Message</b></label>
-            <input type="text" name="message" placeholder="Notes, special instructions, etc..."> </input><br />
-
-            <label for="total"><b>Total</b></label>
-            <input id="total" name="total" type="text" readonly></br>
-            <!-- TODO get total working -->
-
-            <input type="submit" value="Create">
-			<input type="hidden" name="submit" value="true">
-          </form>
+        <div class="col-lg-12 mb-4" style="text-align:center;">
+          <br /><br />
+          <a href='realtor_install_page.php'><button class="btn btn-primary main-button">
+            <span style="font-size:50px;">INSTALL</span></button></a>
         </div>
       </div>
-
-			<div class="row">
-				<div class="col-lg-12 mb-4" style="text-align:center;">
-					<br /><br />
-					<a href='realtor_home.php'><button class="btn btn-primary main-button">
-							<span style="font-size:50px;">BACK</span></button></a>
-				</div>
-			</div>
-
+      <div class="row">
+        <div class="col-lg-12 mb-4" style="text-align:center;">
+          <br /><br />
+          <a href='realtor_remove_page.php'><button class="btn btn-primary main-button">
+            <span style="font-size:50px;">REMOVE</span></button></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 mb-4" style="text-align:center;">
+          <br /><br />
+          <a href='realtor_lowen_page.php'><button class="btn btn-primary main-button">
+            <span style="font-size:50px;">LOWEN</span></button></a>
+        </div>
+      </div>
     </div>
-
-
-
-
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; FVRES 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; FVRES</p>
       </div>
       <!-- /.container -->
     </footer>

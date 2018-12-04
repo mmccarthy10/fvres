@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
 	<style>
 .btn-sq-lg{
 	width: 250px !important;
@@ -27,14 +30,13 @@
 
  <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head> 
+</head>
 	</head>
 
 	<body>
 
 <?php
 
-session_start();
 $servername = "localhost";
 $username = "fvres";
 $password = "password";
@@ -59,11 +61,11 @@ if (mysqli_query($conn, $sql)) {
 }
 
 
-?> 
+?>
 		<!-- Navigation -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="index.php">Name<br /> Company</a>
+				<a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?></a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -151,11 +153,11 @@ if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
 
-echo "<tr>\n<td>" . 
-$row["date"] . "</td>\n<td>" . 
-$row["realtor"] . "</td>\n<td>" .  
-"<a href=./installer_job_detail.php?id=" . $i . ">" . $row["street_address"] . "</td>\n<td>" . 
-$row["city"] . "</td>\n<td>" . 
+echo "<tr>\n<td>" .
+$row["date"] . "</td>\n<td>" .
+$row["realtor"] . "</td>\n<td>" .
+"<a href=./installer_job_detail.php?id=" . $i . ">" . $row["street_address"] . "</td>\n<td>" .
+$row["city"] . "</td>\n<td>" .
 $row["zipcode"] . "</td>\n</tr></a>\n";
 $i += 1;
     }
@@ -164,13 +166,13 @@ $i += 1;
 }
 
 mysqli_close($conn);
-?> 
+?>
 				</tbody>
 			</table>
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='installer_home.html'><button class="btn btn-primary main-button">
+					<a href='installer_home.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>

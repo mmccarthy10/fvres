@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
 	<style>
 .btn-sq-lg{
 	width: 250px !important;
@@ -31,7 +34,7 @@
 		<!-- Navigation -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="index.php">Name (insert)<br /> Company(insert)</a>
+				<a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?> </a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -91,22 +94,29 @@
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='admin_installer_inbox.html'><button class="btn btn-primary main-button">
-							<span style="font-size:50px;">NEW JOBS</span></button></a>
+					<a href='admin_realtor.php'><button class="btn btn-primary main-button">
+							<span style="font-size:50px;">REALTOR</span></button></a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='admin_installer_archive.html'><button class="btn btn-primary main-button">
-							<span style="font-size:30px;">COMPLETED JOBS</span></button></a>
+					<a href='admin_installer.php'><button class="btn btn-primary main-button">
+							<span style="font-size:50px;">INSTALLER</span></button></a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='admin_accounts_temp.php'><button class="btn btn-primary main-button">
+					<a href='admin_account.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">ACCOUNT</span></button></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 mb-4" style="text-align:center;">
+					<br /><br />
+					<a href='admin_lowen.php'><button class="btn btn-primary main-button">
+							<span style="font-size:50px;">LOWEN</span></button></a>
 				</div>
 			</div>
 		</div>
