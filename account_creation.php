@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
   <head>
 
     <meta charset="utf-8">
@@ -36,8 +37,8 @@
               <a class="nav-link" href="services.html">Services</a>
             </li> -->
             <li class="nav-item">
-							<a class="nav-link" href="logout.php">Logout</a>
-						</li>
+              <a class="nav-link" href="logout.php">Logout</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Example2
@@ -90,45 +91,94 @@
         <div class="row">
           <div class="col-lg-12 mb-4">
             <form action="account_values.php" method="post">
-              <label for="first_name"><b>First Name</b></label>
-              <input id="first_name" name="first_name"  type="text" required></br>
 
-              <label for="last_name"><b>Last Name</b></label>
-              <input id="last_name" name="last_name" type="text" required></br>
+              <div class="form-group row">
+                <label for="first_name" class="col-sm-2 col-form-label col-form-label-md"><b>First Name</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="first_name" name="first_name"  type="text" required></br>
+                </div>
+              </div>
 
-              <label for="company"><b>Company</b></label>
-              <input id="company" name="company" type="text" required></br>
+              <div class="form-group row">
+                <label for="last_name" class="col-sm-2 col-form-label col-form-label-md"><b>Last Name</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="last_name" name="last_name" type="text" required></br>
+                </div>
+              </div>
 
-              <label for="email"><b>email</b></label>
-              <input id="email" type="email" name="email" required></br>
+              <div class="form-group row">
+                <label for="company" class="col-sm-2 col-form-label col-form-labe-md"><b>Company</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="company" name="company" type="text" required></br>
+                </div>
+              </div>
 
-              <label for="account_type"><b>Account Type</b></label>
-              <select id="account_type" name="account_type">
-                <option value="0">Admin</option>
-                <option value="1">Realtor</option>
-                <option value="2">Installer</option>
-              </select><br />
+              <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label col-form-labe-md"><b>email</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="email" type="email" name="email" required></br>
+                </div>
+              </div>
 
-              <label for="zipcode"><b>Zipcode</b></label>
-              <input id="zipcode" name="zipcode" type="text" minlength="5" maxlength="5" required></br>
+              <div class="form-group row">
+                <label for="account_type" class="col-sm-2 col-form-label col-form-labe-md"><b>Account Type</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <select id="account_type" name="account_type">
+                    <option value="0">Admin</option>
+                    <option value="1">Realtor</option>
+                    <option value="2">Installer</option>
+                  </select><br />
+                </div>
+              </div>
 
-              <label for="cellnumber"><b>CellPhone Number</b></label>
-              <input id="cellnumber" name="cellnumber" type="tel" minlength="10" maxlength="10" required></br>
+              <div class="form-group row">
+                <label for="zipcode" class="col-sm-2 col-form-label col-form-labe-md"><b>Zipcode</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="zipcode" name="zipcode" type="text" minlength="5" maxlength="5" required></br>
+                </div>
+              </div>
 
-              <label for="homenumber"><b>Home Number</b></label>
-              <input id="homenumber" name="homenumber" type="tel" minlength="10" maxlength="10" required></br>
+              <div class="form-group row">
+                <label for="cellnumber" class="col-sm-2 col-form-label col-form-labe-md"><b>CellPhone Number</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="cellnumber" name="cellnumber" type="tel" minlength="10" maxlength="10" required></br>
+                </div>
+              </div>
 
-              <label for="banknumber"><b>Bank Account Number</b></label>
-              <input id="banknumber" name="banknumber" type="text"></br>
+              <div class="form-group row">
+                <label for="homenumber" class="col-sm-2 col-form-label col-form-labe-md"><b>Home Number</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="homenumber" name="homenumber" type="tel" minlength="10" maxlength="10" required></br>
+                </div>
+              </div>
 
-              <label for="routingnumber"><b>Routing Number</b></label>
-              <input id="routingnumber" name="routingnumber" type="routingnumber"></br>
+              <div class="form-group row">
+                <label for="banknumber" class="col-sm-2 col-form-label col-form-labe-md"><b>Bank Account Number</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="banknumber" name="banknumber" type="text"></br>
+                </div>
+              </div>
 
-              <label for="password"><b>Password</b></label>
-              <input id="password" name="password" type="password" required></br>
+              <div class="form-group row">
+                <label for="routingnumber" class="col-sm-2 col-form-label col-form-labe-md"><b>Routing Number</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="routingnumber" name="routingnumber" type="routingnumber"></br>
+                </div>
+              </div>
 
-              <label for="confirm_password"><b>Confirm Password</b></label>
-              <input id="password_confirm" name="password_confirm" type="password" oninput="check(this)" required></br>
+              <div class="form-group row">
+                <label for="password" class="col-sm-2 col-form-label col-form-labe-md"><b>Password</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="password" name="password" type="password" required></br>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="confirm_password" class="col-sm-2 col-form-label col-form-labe-md"><b>Confirm Password</b></label>
+                <div class="col-sm-10 col-form-label-md">
+                  <input id="password_confirm" name="password_confirm" type="password" oninput="check(this)" required></br>
+                </div>
+              </div>
 
               <script language='javascript' type='text/javascript'>
                   function check(input) {
@@ -141,7 +191,19 @@
                   }
               </script>
 
-              <input type="submit" value="Create Account">
+              <div class="row">
+                <div class="col-lg-12 mb-4" style="text-align:left">
+                  <button class="btn btn-primary main-button" type="submit" name="submit" value="submit">
+                      <span style="font-size:50px;">Submit</span></button>
+                </div>
+
+                <!-- <div class="col-lg-12 mb-4" style="text-align:left;">
+                  <a href='admin_accounts_temp.php'><button class="btn btn-primary main-button">
+                      <span style="font-size:50px;">BACK</span></button></a>
+                </div>
+              </div> -->
+
+              <!-- <input type="submit" name="submit" value="Submit"> -->
             </form>
           </div>
         </div>
@@ -151,7 +213,7 @@
 
 
 
-
+</div>
     </div>
     <!-- /.container -->
 

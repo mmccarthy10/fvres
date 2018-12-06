@@ -215,10 +215,16 @@ mysqli_close($conn);
 			</table>
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
-					<br /><br />
+					<a href='account_creation.php'><button class="btn btn-primary main-button">
+							<span style="font-size:50px;">CREATE</span></button></a>
+				</div>
+
+				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<a href='admin_home.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
+
+
 			</div>
 <div class="container">
 <!--<form action="./test.php" method="post">
