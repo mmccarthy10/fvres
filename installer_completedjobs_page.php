@@ -23,26 +23,27 @@ session_start();
   <body>
 
     <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?></a>
+        <a class="navbar-brand" href="javascript:window.location.href=window.location.href"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?> </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <a class="nav-link" href="services.html">Services</a>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
+							<a class="nav-link" href="logout.php">Logout</a>
+						</li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Portfolio
+                Example2
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                 <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
@@ -54,7 +55,7 @@ session_start();
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
+                Example3
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                 <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
@@ -64,7 +65,7 @@ session_start();
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
+                Example4
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                 <a class="dropdown-item" href="full-width.html">Full Width Page</a>
@@ -80,47 +81,36 @@ session_start();
     </nav>
 
 
-
+<br /><br />
     <!-- Page Content -->
     <div class="container">
 
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Completed Jobs
-        <!--<small>Subheading</small>-->
-      </h1>
-
-      <div class="row">
-        <div class="col-lg-12 mb-4">
-<div class="container">
-			<table class="table table-hover admin-inbox">
-				<thead>
+			<table style="margin: 0px auto;" class="table table-hover admin-inbox table-responsive">
+				<thead class="thead-dark">
 					<tr>
-<th>Date</th>
-<th>Job Type</th>
-<th>Address</th>
-<th>Payment</th>
+<th scope="col">Date</th>
+<th scope="col">Job Type</th>
+<th scope="col">Address</th>
+<th scope="col">Payment</th>
 					</tr>
 				</thead>
-				<tbody>
-				<tr>
-				<td>10-25-2018</td>
-				<td>Installation</td>
-				<td>100 Main St., Oswego, IL</td>
-				<td>$10.00</td>
-				</tr>
-				<tr>
-				<td>
+				    <tbody>
+				          <tr>
+				                <td>10-25-2018</td>
+                				<td>Installation</td>
+                				<td>100 Main St., Oswego, IL</td>
+                				<td>$40.00</td>
+				         </tr>
+				             <tr>
+				                   <td>
 				10-23-2018</td>
 				<td>Removal</td>
 				<td>82 Galena Blvd., Aurora, IL</td>
-				<td>$5.00</td>
+				<td>$25.00</td>
 				</tr>
 				</tbody>
 				</table>
-        </div>
-      </div>
 
-    </div>
 
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
@@ -129,8 +119,8 @@ session_start();
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>
+    </div>
 
-</div>
 
 
 

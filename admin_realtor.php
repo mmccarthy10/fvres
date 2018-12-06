@@ -32,26 +32,27 @@ session_start();
 	<body>
 
 		<!-- Navigation -->
+		<!-- Navigation -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?></a>
+				<a class="navbar-brand" href="javascript:window.location.href=window.location.href"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?> </a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="about.html">About</a>
-						</li>
-						<li class="nav-item">
+						</li> -->
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="services.html">Services</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact</a>
+							<a class="nav-link" href="logout.php">Logout</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Portfolio
+								Example2
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
 								<a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
@@ -63,7 +64,7 @@ session_start();
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Blog
+								Example3
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 								<a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
@@ -73,7 +74,7 @@ session_start();
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Other Pages
+								Example4
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 								<a class="dropdown-item" href="full-width.html">Full Width Page</a>
@@ -98,13 +99,13 @@ session_start();
 							<span style="font-size:50px;">JOBS</span></button></a>
 				</div>
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
 					<a href='admin_accounts_temp.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">ACCOUNT</span></button></a>
 				</div>
-			</div>
+			</div> -->
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />

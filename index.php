@@ -108,7 +108,7 @@ if(isset($_REQUEST['submit']))
 
 				<form class="login100-form validate-form" method="post" action="index.php">
 					<span class="login100-form-title">
-						Installer and Realtor Login
+						FVRES Login
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -129,7 +129,7 @@ if(isset($_REQUEST['submit']))
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							<input type="submit" name="submit" value="Login">
+							<!-- <input type="submit" name="submit" value="Login"> -->Login
 						</button>
 					</div>
 

@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 session_start();
+//error_reporting(0);
 ?>
 	<style>
 .btn-sq-lg{
@@ -44,7 +45,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
+/*
 if ($_GET['del'] != '') {
 $sql = "DELETE FROM accounts WHERE account_id=" . $_GET['del'];
 
@@ -80,29 +81,30 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 }
-
+*/
 ?>
+		<!-- Navigation -->
 		<!-- Navigation -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?> </a>
+				<a class="navbar-brand" href="javascript:window.location.href=window.location.href"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?> </a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="about.html">About</a>
-						</li>
-						<li class="nav-item">
+						</li> -->
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="services.html">Services</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact</a>
+							<a class="nav-link" href="logout.php">Logout</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Portfolio
+								Example2
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
 								<a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
@@ -114,7 +116,7 @@ if (mysqli_query($conn, $sql)) {
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Blog
+								Example3
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 								<a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
@@ -124,7 +126,7 @@ if (mysqli_query($conn, $sql)) {
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Other Pages
+								Example4
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 								<a class="dropdown-item" href="full-width.html">Full Width Page</a>
@@ -140,23 +142,23 @@ if (mysqli_query($conn, $sql)) {
 		</nav>
 
 		<div class="container">
-			<h2>Hover Rows</h2>
-			<table class="table table-hover admin-inbox">
-				<thead>
+			<!--<h2>Hover Rows</h2>--><br /><br />
+			<table class="table table-hover admin-inbox table-responsive">
+				<thead class="thead-dark">
 					<tr>
-<th>ID</th>
-<th>Account Name</th>
-<th>First Name</th>
-<th>Last Name</th>
-<th>Company</th>
-<th>Email</th>
-<th>Account Type</th>
-<th>Zip Code</th>
-<th>Cell Number</th>
-<th>Company Number</th>
-<th>Bank Number</th>
-<th>Routing Number</th>
-<th>Delete?</th>
+<!-- <th scope="col">ID</th> -->
+<!-- <th scope="col">Account Name</th> -->
+<th scope="col">First Name</th>
+<th scope="col">Last Name</th>
+<th scope="col">Company</th>
+<th scope="col">Email</th>
+<th scope="col">Account Type</th>
+<th scope="col">Zip Code</th>
+<th scope="col">Cell Number</th>
+<th scope="col">Company Number</th>
+<!-- <th scope="col">Bank Number</th>
+<th scope="col">Routing Number</th> -->
+<th scope="col">Delete?</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -179,20 +181,29 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
+			if($row["account_type"] == 0)
+			{
+				$role="Admin";
+			}
+			elseif($row["account_type"] == 1)
+			{
+				$role="Realtor";
+			}
+			else{
+				$role="Installer";
+			}
 echo "<tr>\n<td>" .
-$row["account_id"] . "</td>\n<td>" .
-$row["accountname"] . "</td>\n<td>" .
+// $row["account_id"] . "</td>\n<td>" .
+// $row["accountname"] . "</td>\n<td>" .
 $row["first_name"] . "</td>\n<td>" .
 $row["last_name"] . "</td>\n<td>" .
 $row["company"] . "</td>\n<td>" .
 $row["email"] . "</td>\n<td>" .
-$row["account_type"] . "</td>\n<td>" .
+$role . "</td>\n<td>" .
 $row["zipcode"] . "</td>\n<td>" .
 $row["cellnumber"] . "</td>\n<td>" .
-$row["homenumber"] . "</td>\n<td>" .
-$row["banknumber"] . "</td>\n<td>" .
-$row["routingnumber"] . "</td>\n<td>
-<a href='./test.php?del=" . $row["account_id"] . "'>x</a></td>\n</tr>\n";
+$row["homenumber"] . "</td>\n<td>
+<a href='./delete.php?del=" . $row["account_id"] . "'>x</a></td>\n</tr>\n";
     }
 } else {
     echo "0 results";
@@ -205,7 +216,7 @@ mysqli_close($conn);
 			<div class="row">
 				<div class="col-lg-12 mb-4" style="text-align:center;">
 					<br /><br />
-					<a href='admin_installer.php'><button class="btn btn-primary main-button">
+					<a href='admin_home.php'><button class="btn btn-primary main-button">
 							<span style="font-size:50px;">BACK</span></button></a>
 				</div>
 			</div>

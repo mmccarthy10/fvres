@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 session_start();
+error_reporting(0);
 ?>
   <head>
 
@@ -74,26 +75,27 @@ if (mysqli_query($conn, $sql)) {
 }
 ?>
     <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.php"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?></a>
+        <a class="navbar-brand" href="javascript:window.location.href=window.location.href"><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?><br /> <?php echo $_SESSION["company"] ?> </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <a class="nav-link" href="services.html">Services</a>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
+							<a class="nav-link" href="logout.php">Logout</a>
+						</li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Portfolio
+                Example2
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                 <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
@@ -105,7 +107,7 @@ if (mysqli_query($conn, $sql)) {
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
+                Example3
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                 <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
@@ -115,7 +117,7 @@ if (mysqli_query($conn, $sql)) {
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
+                Example4
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                 <a class="dropdown-item" href="full-width.html">Full Width Page</a>
@@ -136,27 +138,44 @@ if (mysqli_query($conn, $sql)) {
     <div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Install Page
+    </br /><h1 class="mt-4 mb-3">Install Job Creation
         <!--<small>Subheading</small>-->
       </h1>
 
       <div class="row">
         <div class="col-lg-12 mb-4">
           <form action="./realtor_install_page.php" method="post">
-            <label for="address"><b>Address</b></label>
-            <input id="address" name="address" type="text" placeholder="1234 Main St" required></br>
 
-            <label for="city"><b>City</b></label>
-            <input id="city" name="city" type="text" value="" required></br>
+            <div class="form-group row">
+              <label for="address" class="col-sm-2 col-form-label col-form-label-lg"><b>Address</b></label>
+              <div class="col-sm-10 col-form-label-lg">
+                <input id="address" name="address" type="text" placeholder="1234 Main St" required></br>
+              </div>
+            </div>
 
-            <label for="state"><b>State</b></label>
-            <input id="state" name="state" type="text" value="Illinois" required></br>
+            <div class="form-group row">
+              <label for="city" class="col-sm-2 col-form-label col-form-label-lg"><b>City</b></label>
+              <div class="col-sm-10 col-form-label-lg">
+                <input id="city" name="city" type="text" value="" required></br>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="state" class="col-sm-2 col-form-label col-form-label-lg"><b>State</b></label>
+              <div class="col-sm-10 col-form-label-lg">
+                <input id="state" name="state" type="text" value="Illinois" required></br>
+              </div>
+            </div>
             <!-- TODO: posssible Javascript to autofill / complete typing -->
 
-            <label for="zipcode"><b>Zipcode</b></label>
-            <input id="zipcode" name="zipcode" type="text" minlength="5" maxlength="5" required></br>
+            <div class="form-group row">
+              <label for="zipcode" class="col-sm-2 col-form-label col-form-label-lg"><b>Zipcode</b></label>
+              <div class="col-sm-10 col-form-label-lg">
+                <input id="zipcode" name="zipcode" type="text" minlength="5" maxlength="5" required></br>
+              </div>
+            </div>
 
-            <br /><h4> Options </h4><br />
+            <br /><h2> Options </h2><br />
             <input type="checkbox" name="ground_post" value="ground_post"> Post </input><br />
 
             <input type="checkbox" name="brochure_box" value="brochure_box"> Brochure Box</input><br />
@@ -166,15 +185,20 @@ if (mysqli_query($conn, $sql)) {
             <input type="checkbox" name="rider" value="rider"> Rider </input><br />
             <!--TODO: Create JS and JQuery to autofill options and create running tally of prices-->
 
-            <label for="message"><b>Message</b></label>
-            <input type="text" name="message" placeholder="Notes, special instructions, etc..."> </input><br />
+            <div class="form-group row">
+              <label for="message" class="col-sm-2 col-form-label col-form-label-lg"><b>Message</b></label>
+              <div class="col-sm-10 col-form-label-lg">
+                <textarea name="message" placeholder="Notes, special instructions, etc..." rows="3"> </textarea><br />
+              </div>
+            </div>
 
-            <label for="total"><b>Total</b></label>
+            <!-- <label for="total"><b>Total</b></label>
             <input id="total" name="total" type="text" readonly></br>
             <!-- TODO get total working -->
 
-            <input type="submit" value="Create">
-			<input type="hidden" name="submit" value="true">
+            <button type="submit" value="Create" class="btn btn-dark mb-2">CREATE</button>
+			      <input type="hidden" name="submit" value="true">
+
           </form>
         </div>
       </div>
