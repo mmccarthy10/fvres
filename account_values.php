@@ -1,6 +1,8 @@
 <html>
   <title> Info here </title>
   <body>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
     <table>
         <?php
             foreach ($_POST as $key => $value) {
